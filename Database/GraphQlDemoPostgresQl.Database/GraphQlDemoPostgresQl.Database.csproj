@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../../Abstractions/GraphQlDemoPostgresQl.Abstractions/GraphQlDemoPostgresQl.Abstractions.csproj" />
+    <ProjectReference Include="../../Common/GraphQlDemoPostgresQl.Common/GraphQlDemoPostgresQl.Common.csproj" />
     <ProjectReference Include="../../DatabaseModels/GraphQlDemoPostgresQl.DatabaseModels/GraphQlDemoPostgresQl.DatabaseModels.csproj" />
   </ItemGroup>
 

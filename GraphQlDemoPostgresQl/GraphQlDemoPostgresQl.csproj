@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="15.0.3" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Abstractions/GraphQlDemoPostgresQl.Abstractions/GraphQlDemoPostgresQl.Abstractions.csproj" />
+    <ProjectReference Include="../ApiModels/GraphQlDemoPostgresQl.ApiModels/GraphQlDemoPostgresQl.ApiModels.csproj" />
+    <ProjectReference Include="../Database/GraphQlDemoPostgresQl.Database/GraphQlDemoPostgresQl.Database.csproj" />
   </ItemGroup>
 
 </Project>
