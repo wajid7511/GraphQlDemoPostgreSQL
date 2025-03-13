@@ -1,8 +1,9 @@
-using System;
 using System.Reflection;
 using GraphQlDemoPostgresQl.Abstractions;
 using GraphQlDemoPostgresQl.Mappers;
+using GraphQlDemoPostgresQl.Mutations;
 using GraphQlDemoPostgresQl.Queries;
+using GraphQlDemoPostgresQl.Subscriptions;
 
 namespace GraphQlDemoPostgresQl.Extensions;
 
@@ -13,14 +14,16 @@ public static class GraphQlDemoPostgresQlExtension
         service.AddAutoMapper(typeof(GraphQlDemoPostgresQlMapperProfile));
         return service;
     }
-
-
     public static IServiceCollection AddGraphQlDemoPostgresQl(this IServiceCollection service)
     {
         service
             .AddGraphQLServer()
             .AddQueryType<Query>()
             .AddTypeExtension<CustomerQuery>()
+            .AddMutationType<Mutation>()
+            .AddTypeExtension<CustomerMutation>()
+            .AddSubscriptionType<CustomerSubscription>()
+            .AddInMemorySubscriptions()
             .AddProjections()
             .AddFiltering()
             .AddSorting();

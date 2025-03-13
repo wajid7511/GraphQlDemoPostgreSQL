@@ -9,7 +9,9 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="15.0.3" />
+    <PackageReference Include="HotChocolate.AspNetCore.Subscriptions" Version="10.5.5" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.0.3" />
+    <PackageReference Include="HotChocolate.Subscriptions" Version="15.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
   </ItemGroup>
 

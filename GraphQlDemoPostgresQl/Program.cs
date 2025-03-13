@@ -11,6 +11,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) { }
 
+app.UseWebSockets();
+
 app.UseHttpsRedirection();
 
 app.MapGraphQL("/graphql");
