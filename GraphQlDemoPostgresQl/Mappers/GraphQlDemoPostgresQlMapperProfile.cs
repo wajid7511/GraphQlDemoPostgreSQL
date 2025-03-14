@@ -9,5 +9,6 @@ public class GraphQlDemoPostgresQlMapperProfile : Profile
     public GraphQlDemoPostgresQlMapperProfile()
     {
         CreateMap<CustomerEntity, CustomerSchema>();
+        CreateMap<CreateCustomerSchema, CustomerEntity>();
     }
 }
