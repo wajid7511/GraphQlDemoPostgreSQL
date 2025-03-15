@@ -1,16 +1,16 @@
+using System.Text.Json;
 using AutoMapper;
 using GraphQlDemoPostgresQl.ApiModels;
+using GraphQlDemoPostgresQl.Common.Abstractions;
 using GraphQlDemoPostgresQl.Database.DALs;
 using GraphQlDemoPostgresQl.DatabaseModels.Customers;
-using HotChocolate.Subscriptions;
 
 namespace GraphQlDemoPostgresQl.Mutations;
 
 [ExtendObjectType<Mutation>]
-public class CustomerMutation(ITopicEventSender eventSender)
+public class CustomerMutation(IMessageQueueService messageQueueService)
 {
-    private readonly ITopicEventSender _eventSender = eventSender;
-
+    private readonly IMessageQueueService _messageQueueService = messageQueueService ?? throw new ArgumentNullException(nameof(messageQueueService));
     public async Task<CustomerSchema> CreateCustomer([Service] CustomerDAL customerDAL, [Service] IMapper mapper, CreateCustomerSchema customerSchema, CancellationToken cancellationToken = default)
     {
         var customerEntity = mapper.Map<CustomerEntity>(customerSchema);
@@ -18,8 +18,7 @@ public class CustomerMutation(ITopicEventSender eventSender)
         if (addResult.IsSuccess && addResult.Data != null)
         {
             var customer = mapper.Map<CustomerSchema>(addResult.Data);
-            // Publish event to the "newCustomer" topic
-            await _eventSender.SendAsync("onCustomerCreated", customer, cancellationToken);
+            _messageQueueService.PublishMessage(JsonSerializer.Serialize(customer));
             return customer;
         }
         throw addResult.Exception ?? new Exception("Unable to add customer;");

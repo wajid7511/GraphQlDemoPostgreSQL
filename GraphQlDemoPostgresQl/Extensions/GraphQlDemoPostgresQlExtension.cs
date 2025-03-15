@@ -32,7 +32,7 @@ public static class GraphQlDemoPostgresQlExtension
 
     public static void RegisterGraphQlDemoPostgresQlIServicesRegisterModules(
            this IServiceCollection services,
-           ConfigurationManager configuration
+           IConfiguration configuration
        )
     {
         try

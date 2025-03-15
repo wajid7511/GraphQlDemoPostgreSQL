@@ -9,7 +9,8 @@ namespace GraphQlDemoPostgresQl.Database.Extensions;
 
 public class DatabaseRegisterServices : IServiceRegistrationModule
 {
-    public void RegisterServices(IServiceCollection services, ConfigurationManager configuration)
+    public void RegisterServices(IServiceCollection services,
+            IConfiguration configuration)
     {
         services.AddDbContext<PostgresQlDbContext>(
             options => options.UseNpgsql(configuration.GetConnectionString("Default"))

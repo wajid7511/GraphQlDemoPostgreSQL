@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HotChocolate.Subscriptions.RabbitMQ" Version="15.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.3" /> 
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../Abstractions/GraphQlDemoPostgresQl.Abstractions/GraphQlDemoPostgresQl.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

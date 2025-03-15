@@ -6,7 +6,7 @@ namespace GraphQlDemoPostgresQl.Abstractions;
 public interface IServiceRegistrationModule
 {
     void RegisterServices(
-           IServiceCollection serviceRegistration,
-           ConfigurationManager configuration
+            IServiceCollection serviceRegistration,
+            IConfiguration configuration
        );
 }
