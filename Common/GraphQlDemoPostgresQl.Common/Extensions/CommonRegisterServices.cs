@@ -11,6 +11,6 @@ public class CommonRegisterServices : IServiceRegistrationModule
     public void RegisterServices(IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<RabbitMqOptions>(configuration.GetSection(RabbitMqOptions.CONFIG_PATH));
-        services.AddSingleton<IMessageQueueService, DefaultProducerRabbitMQ>();
+        services.AddSingleton<IMessageQueueService, DefaultRabbitMqService>();
     }
 }

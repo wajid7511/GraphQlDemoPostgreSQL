@@ -29,6 +29,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseModels", "DatabaseM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQlDemoPostgresQl.DatabaseModels", "DatabaseModels\GraphQlDemoPostgresQl.DatabaseModels\GraphQlDemoPostgresQl.DatabaseModels.csproj", "{8CA9ABDF-319E-43E1-8F34-681A219C7514}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMqConsumer", "RabbitMqConsumer", "{8BBC191C-2844-76BB-1A74-E3A1523FD0AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutomerConsumer", "RabbitMqConsumer\CutomerConsumer\CutomerConsumer.csproj", "{C4423582-529E-4928-A54F-90B31C3617AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,18 @@ Global
 		{8CA9ABDF-319E-43E1-8F34-681A219C7514}.Release|x64.Build.0 = Release|Any CPU
 		{8CA9ABDF-319E-43E1-8F34-681A219C7514}.Release|x86.ActiveCfg = Release|Any CPU
 		{8CA9ABDF-319E-43E1-8F34-681A219C7514}.Release|x86.Build.0 = Release|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Debug|x64.Build.0 = Debug|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Debug|x86.Build.0 = Debug|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Release|x64.ActiveCfg = Release|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Release|x64.Build.0 = Release|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Release|x86.ActiveCfg = Release|Any CPU
+		{C4423582-529E-4928-A54F-90B31C3617AF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,5 +150,6 @@ Global
 		{65D81DD3-EE8D-4566-9A75-A4C82B26D329} = {881589EE-639B-0A35-DBCE-5D94E4FC90C0}
 		{8D0F8C8C-15A5-40DA-8C22-DBCBDDE5326D} = {793CF00F-5F65-6C21-7584-126562EF1BE9}
 		{8CA9ABDF-319E-43E1-8F34-681A219C7514} = {A5ACC84A-F291-BE42-A904-42347BF05559}
+		{C4423582-529E-4928-A54F-90B31C3617AF} = {8BBC191C-2844-76BB-1A74-E3A1523FD0AF}
 	EndGlobalSection
 EndGlobal
