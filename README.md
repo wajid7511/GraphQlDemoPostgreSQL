@@ -8,7 +8,7 @@ Folder Structure and Class Libraries
 
 This class library defines the core interfaces and contracts used throughout the application. By centralizing these abstractions, the project promotes loose coupling and enhances testability.
 
-Key Components:
+🔹 Key Components:
 
 Interfaces: Define contracts for services, repositories, and other components.
 
@@ -18,7 +18,7 @@ DTOs (Data Transfer Objects): Represent data structures for communication betwee
 
 This library contains models that represent the data structures exposed by the GraphQL API. These models are tailored for client interactions and may differ from the internal database models.
 
-Key Components:
+🔹 Key Components:
 
 GraphQL Types: Define the GraphQL object types, queries, mutations, and subscriptions.
 
@@ -26,9 +26,9 @@ Input Models: Represent the structure of inputs for GraphQL mutations.
 
 3. Common/GraphQlDemoPostgresQl.Common
 
-This library provides common utilities, helpers, and constants used across the application. It ensures consistency and reduces redundancy.
+This library provides common utilities, helpers, and constants used across the application. It ensures consistency and reduces redundancy. This also have a class which is created for RabbitMq.
 
-Key Components:
+🔹 Key Components:
 
 Extensions: Methods that extend existing classes with additional functionality.
 
@@ -40,7 +40,7 @@ Helpers: Utility classes and methods for common tasks (e.g., logging, error hand
 
 This library encapsulates the business logic of the application. It implements the interfaces defined in the Abstractions project and contains the core functionalities.
 
-Key Components:
+🔹 Key Components:
 
 Services: Implement business operations and coordinate between repositories and API models.
 
@@ -50,7 +50,7 @@ Managers: Handle complex business rules and workflows.
 
 This library is responsible for database interactions, including the Entity Framework Core (EF Core) DbContext and migrations.
 
-Key Components:
+🔹 Key Components:
 
 DbContext: Manages the database connection and is responsible for querying and saving data.
 
@@ -60,17 +60,22 @@ Migrations: Handle schema changes and versioning of the database.
 
 This library contains the entity models that map directly to the database tables. These models are used by the DbContext to perform CRUD operations.
 
-Key Components:
+🔹 Key Components:
 
 Entities: Classes that represent the database tables and their relationships.
 
 Configurations: Fluent API configurations for entity properties and relationships.
 
+7. This library contains a console application that consumes messages from RabbitMQ. It is designed to run parallel with GraphQlDemoPostgresQl.
+
+🔹 Key Components:
+RabbitMQ Consumer – Listens for messages from the queue and processes them.
+
 7. GraphQlDemoPostgresQl (Main Application)
 
 This is the main entry point of the application. It sets up the ASP.NET Core host, configures services, and defines the middleware pipeline.
 
-Key Components:
+🔹 Key Components:
 
 Startup.cs: Configures services and the application's request pipeline.
 
