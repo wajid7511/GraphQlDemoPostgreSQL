@@ -1,6 +1,7 @@
 using System.Text.Json;
 using AutoMapper;
-using GraphQlDemoPostgresQl.ApiModels;
+using GraphQlDemoPostgresQl.ApiModels.Inputs.Customers;
+using GraphQlDemoPostgresQl.ApiModels.Outputs.Customers;
 using GraphQlDemoPostgresQl.Common.Abstractions;
 using GraphQlDemoPostgresQl.Database.DALs;
 using GraphQlDemoPostgresQl.DatabaseModels.Customers;

@@ -1,5 +1,5 @@
 using AutoMapper;
-using GraphQlDemoPostgresQl.ApiModels;
+using GraphQlDemoPostgresQl.ApiModels.Outputs.Customers;
 using GraphQlDemoPostgresQl.Database.DbContexts;
 
 namespace GraphQlDemoPostgresQl.Queries;

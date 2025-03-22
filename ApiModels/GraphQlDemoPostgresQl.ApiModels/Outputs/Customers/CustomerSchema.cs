@@ -1,6 +1,6 @@
 ﻿using HotChocolate;
 
-namespace GraphQlDemoPostgresQl.ApiModels;
+namespace GraphQlDemoPostgresQl.ApiModels.Outputs.Customers;
 
 public class CustomerSchema
 {

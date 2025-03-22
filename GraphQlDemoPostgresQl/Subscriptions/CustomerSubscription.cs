@@ -1,4 +1,4 @@
-using GraphQlDemoPostgresQl.ApiModels;
+using GraphQlDemoPostgresQl.ApiModels.Outputs.Customers;
 
 namespace GraphQlDemoPostgresQl.Subscriptions;
 
