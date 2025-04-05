@@ -3,8 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using GraphQlDemoPostgresQl.Common.Core.RabbitMq;
-using GraphQlDemoPostgresQl.Common.Abstractions;
 using Microsoft.Extensions.Configuration;
+using GraphQlDemoPostgresQl.Abstractions.RabbitMq;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration((context, config) =>

@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AB3BF05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQlDemoPostgresQl.ApiModels.Tests", "Tests\GraphQlDemoPostgresQl.ApiModels.Tests\GraphQlDemoPostgresQl.ApiModels.Tests.csproj", "{D7975035-434C-45F2-9133-2F2F1F678EE1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQlDemoPostgresQl.Common.Tests", "Tests\GraphQlDemoPostgresQl.Common.Tests\GraphQlDemoPostgresQl.Common.Tests.csproj", "{F1B99EDF-5CD5-4363-9797-220BD7042AF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +157,18 @@ Global
 		{D7975035-434C-45F2-9133-2F2F1F678EE1}.Release|x64.Build.0 = Release|Any CPU
 		{D7975035-434C-45F2-9133-2F2F1F678EE1}.Release|x86.ActiveCfg = Release|Any CPU
 		{D7975035-434C-45F2-9133-2F2F1F678EE1}.Release|x86.Build.0 = Release|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Debug|x64.Build.0 = Debug|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Debug|x86.Build.0 = Debug|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Release|x64.ActiveCfg = Release|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Release|x64.Build.0 = Release|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Release|x86.ActiveCfg = Release|Any CPU
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,5 +182,6 @@ Global
 		{8CA9ABDF-319E-43E1-8F34-681A219C7514} = {A5ACC84A-F291-BE42-A904-42347BF05559}
 		{C4423582-529E-4928-A54F-90B31C3617AF} = {8BBC191C-2844-76BB-1A74-E3A1523FD0AF}
 		{D7975035-434C-45F2-9133-2F2F1F678EE1} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{F1B99EDF-5CD5-4363-9797-220BD7042AF7} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal

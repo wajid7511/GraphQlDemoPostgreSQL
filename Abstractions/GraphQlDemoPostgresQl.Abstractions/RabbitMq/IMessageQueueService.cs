@@ -1,6 +1,7 @@
+using System;
 using RabbitMQ.Client.Events;
 
-namespace GraphQlDemoPostgresQl.Common.Abstractions;
+namespace GraphQlDemoPostgresQl.Abstractions.RabbitMq;
 
 public interface IMessageQueueService
 {

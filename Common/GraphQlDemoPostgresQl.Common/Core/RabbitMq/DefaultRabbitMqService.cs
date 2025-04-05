@@ -1,5 +1,5 @@
 using System.Text;
-using GraphQlDemoPostgresQl.Common.Abstractions;
+using GraphQlDemoPostgresQl.Abstractions.RabbitMq;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
@@ -9,106 +9,65 @@ namespace GraphQlDemoPostgresQl.Common.Core.RabbitMq;
 
 public class DefaultRabbitMqService : IMessageQueueService, IDisposable
 {
-    private readonly RabbitMqOptions _rabbitMqOptions;
-    private readonly ILogger<DefaultRabbitMqService> _logger;
-    private IConnection? _connection;
-    private IModel? _channel;
+    private readonly IRabbitMqConnectionProvider _connectionProvider;
+    private readonly ILogger<DefaultRabbitMqService>? _logger;
+    private readonly string _queueName;
 
-    public DefaultRabbitMqService(IOptions<RabbitMqOptions> rabbitMqOptions, ILogger<DefaultRabbitMqService> logger)
+    public DefaultRabbitMqService(
+        IOptions<RabbitMqOptions> rabbitMqOptions,
+        IRabbitMqConnectionProvider connectionProvider,
+        ILogger<DefaultRabbitMqService>? logger = null)
     {
-        _rabbitMqOptions = rabbitMqOptions.Value ?? throw new ArgumentNullException(nameof(rabbitMqOptions));
+        var options = rabbitMqOptions.Value ?? throw new ArgumentNullException(nameof(rabbitMqOptions));
+        _connectionProvider = connectionProvider ?? throw new ArgumentNullException(nameof(connectionProvider));
+        _queueName = options.QueueName;
         _logger = logger;
-        EnsureConnection();
+
+        EnsureQueueExists();
     }
 
-    private void EnsureConnection()
+    private void EnsureQueueExists()
     {
-        if (_connection == null || !_connection.IsOpen)
-        {
-            var factory = new ConnectionFactory
-            {
-                HostName = _rabbitMqOptions.HostName,
-                Port = _rabbitMqOptions.Port,
-                UserName = _rabbitMqOptions.UserName,
-                Password = _rabbitMqOptions.Password,
-                DispatchConsumersAsync = true
-            };
-
-            _connection = factory.CreateConnection();
-            _channel = _connection.CreateModel();
-
-            // Ensure Queue Declaration Matches
-            _channel.QueueDeclare(
-                queue: _rabbitMqOptions.QueueName,
-                durable: true,  // Make sure this matches the existing queue
-                exclusive: false,
-                autoDelete: false,
-                arguments: null
-            );
-
-            _logger.LogInformation("RabbitMQ connection established.");
-        }
+        var channel = _connectionProvider.GetChannel();
+        channel.QueueDeclare(queue: _queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
     }
-
     public bool PublishMessage(string message)
     {
         try
         {
-            EnsureConnection();
-
-            if (_channel == null || !_channel.IsOpen)
-            {
-                _logger.LogError("RabbitMQ channel is not open.");
-                return false;
-            }
-
+            var channel = _connectionProvider.GetChannel();
             var body = Encoding.UTF8.GetBytes(message);
-            _channel.BasicPublish(
-                exchange: "",
-                routingKey: _rabbitMqOptions.QueueName,
-                basicProperties: null,
-                body: body
-            );
 
-            _logger.LogInformation("Message published: {Message}", message);
+            channel.BasicPublish(exchange: "",
+                                 routingKey: _queueName,
+                                 basicProperties: null,
+                                 body: body);
             return true;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unable to push message to queue");
+            _logger?.LogError(ex, "Error publishing message.");
             return false;
         }
     }
 
     public void RegisterConsumer(AsyncEventHandler<BasicDeliverEventArgs> eventHandler)
     {
-        EnsureConnection();
+        var channel = _connectionProvider.GetChannel();
 
-        if (_channel == null)
-        {
-            _logger.LogError("Channel is not available for consuming messages.");
-            return;
-        }
-
-        var consumer = new AsyncEventingBasicConsumer(_channel);
+        var consumer = new AsyncEventingBasicConsumer(channel);
         consumer.Received += eventHandler;
 
-        _channel.BasicConsume(
-            queue: _rabbitMqOptions.QueueName,
+        channel.BasicConsume(
+            queue: _queueName,
             autoAck: true,
             consumer: consumer
         );
-
-        _logger.LogInformation("Consumer registered on queue: {QueueName}", _rabbitMqOptions.QueueName);
     }
 
     public void Dispose()
     {
-        _channel?.Close();
-        _connection?.Close();
-        _channel?.Dispose();
-        _connection?.Dispose();
-        _logger.LogInformation("RabbitMQ resources disposed.");
+        (_connectionProvider as IDisposable)?.Dispose();
         GC.SuppressFinalize(this);
     }
 }
