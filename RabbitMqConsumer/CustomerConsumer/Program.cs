@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using GraphQlDemoPostgresQl.Common.Core.RabbitMq;
 using Microsoft.Extensions.Configuration;
 using GraphQlDemoPostgresQl.Abstractions.RabbitMq;
+using RabbitMQ.Client;
+using Microsoft.Extensions.Options;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration((context, config) =>
@@ -17,6 +19,21 @@ var host = Host.CreateDefaultBuilder(args)
     {
         services.Configure<RabbitMqOptions>(context.Configuration.GetSection(RabbitMqOptions.CONFIG_PATH));
         services.AddSingleton<IMessageQueueService, DefaultRabbitMqService>(); // Register RabbitMQ service as singleton
+        services.AddSingleton<IRabbitMqConnectionProvider, RabbitMqConnectionProvider>();
+        services.AddSingleton<IConnectionFactory>(sp =>
+        {
+            var options = sp.GetRequiredService<IOptions<RabbitMqOptions>>().Value;
+
+            return new ConnectionFactory
+            {
+                HostName = options.HostName,
+                Port = options.Port,
+                UserName = options.UserName,
+                Password = options.Password,
+                DispatchConsumersAsync = true
+            };
+        });
+
     })
     .ConfigureLogging(logging =>
     {

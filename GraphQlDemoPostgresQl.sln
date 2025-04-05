@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQlDemoPostgresQl.Datab
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMqConsumer", "RabbitMqConsumer", "{8BBC191C-2844-76BB-1A74-E3A1523FD0AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CutomerConsumer", "RabbitMqConsumer\CutomerConsumer\CutomerConsumer.csproj", "{C4423582-529E-4928-A54F-90B31C3617AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerConsumer", "RabbitMqConsumer\CustomerConsumer\CustomerConsumer.csproj", "{C4423582-529E-4928-A54F-90B31C3617AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
